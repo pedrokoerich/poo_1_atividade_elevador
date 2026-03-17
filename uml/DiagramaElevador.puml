@@ -1,0 +1,41 @@
+@startuml DiagramaElevador
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #000000
+skinparam classArrowColor #000000
+skinparam arrowFontSize 12
+
+class Elevador {
+    {field} -andarAtual: int
+    {field} -andarMaximo: int
+    {field} -portaAberta: boolean
+
+    {method} +Elevador(andarMaximo: int)
+    {method} +abrirPorta(): void
+    {method} +fecharPorta(): void
+    {method} +isPortaAberta(): boolean
+    {method} +getAndarAtual(): int
+    {method} +getAndarMaximo(): int
+    {method} +subir(andar: int): void
+    {method} +descer(andar: int): void
+    {method} +exibirStatus(): void
+    {method} +toString(): String
+}
+
+note right of Elevador
+    Responsabilidades:
+    • Gerenciar andar atual
+    • Controlar estado da porta
+    • Permitir subir/descer entre
+      andares válidos
+    • Validar restrições de operação
+
+    Restrições:
+    • Andar entre 1 e andarMaximo
+    • Não pode mover com porta aberta
+    • Não pode subir para andar ≤ atual
+    • Não pode descer para andar ≥ atual
+end note
+
+@enduml
